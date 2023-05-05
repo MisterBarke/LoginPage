@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:signup_page/driver_register.dart';
+import 'package:signup_page/settings.dart';
 
 class MyRegister extends StatefulWidget {
   const MyRegister({Key? key}) : super(key: key);
@@ -98,7 +100,9 @@ class _MyRegisterState extends State<MyRegister> {
                         backgroundColor: const Color.fromARGB(255, 211, 114, 22),
                         child: IconButton(
                           color: Colors.white,
-                          onPressed: () {},
+                          onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>const SettingsPage()));
+                          },
                           icon: const Icon(Icons.arrow_forward),
                         ),
                       ),
@@ -106,28 +110,39 @@ class _MyRegisterState extends State<MyRegister> {
                 const SizedBox(
                   height: 40,
                 ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, 'login');
-                        },
-                        child: const Text(
-                          'Login',
-                          style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            fontSize: 18,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ]),
+                const NewWidget(),
               ]),
             ),
           ),
         ]),
       ),
     );
+  }
+}
+
+class NewWidget extends StatelessWidget {
+  const NewWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, 'login');
+            },
+            child: const Text(
+              'Login',
+              style: TextStyle(
+                decoration: TextDecoration.underline,
+                fontSize: 18,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ]);
   }
 }
